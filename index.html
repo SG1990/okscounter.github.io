@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://cerber.cs.put.poznan.pl/~inf94327/counter/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>This one is kinda surprising ^^</title>
+	<script>
+		function startTime()
+		{
+		var date = 1418747400000;
+		var between = date - (new Date().getTime());
+		
+		var d = Math.floor(between / (60 * 1000 * 60 *24));
+		var h = Math.floor(between / (60 * 1000 * 60)) % 24;
+		var m = Math.floor(between / (60 * 1000)) % 60;
+		var s = Math.floor(between / 1000) % 60;
+		var ms = Math.floor(between / 10) % 100;
+		
+		m=checkTime(m);
+		s=checkTime(s);
+		ms=checkTime(ms);
+		
+		if (between > 0){
+			document.getElementById('counter').innerHTML=
+				d+"d "+h+"h "+m+"m "+s+"s "+ms+"cs";
+		} else {
+			document.getElementById('counter').innerHTML=
+				"now.";
+		}
+		
+		
+		t=setTimeout(function(){startTime()},5);
+		}
+
+		function checkTime(i)
+		{
+		if (i<10)
+		  {
+		  i="0" + i;
+		  }
+		return i;
+		}
+	</script>
+	</head>
+
+	<body onload="startTime()" style="background-color: black;">
+		<div style="vertical-align: middle; color: white; font-size: 150%; text-align: center;" id="counter">now.</div>
+	
+</body></html>
